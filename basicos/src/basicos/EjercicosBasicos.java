@@ -1,7 +1,9 @@
 package basicos;
 
 import java.sql.Date;
+import java.text.DateFormat;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 /**
@@ -41,10 +43,13 @@ public class EjercicosBasicos {
 		System.out.println(resultado2);
 		boolean resultadoEjercicio3 = isPar(4);
 		System.out.println(resultadoEjercicio3);
-		boolean resultadoEjercicio4 = esMayorEdad(15);
+		boolean resultadoEjercicio4 = esMayorEdad(20);
 		System.out.println("Mayor de edad es:" + resultadoEjercicio4);
 		//boolean resultadoEjercicio4_1 = esMayorEdadCalculado();
 		//System.out.println("Mayor de edad es:" + resultadoEjercicio4_1);
+		String resultadoEjercicio5 = clasificarNota(2);
+		System.out.println("Tu calificación es: " + resultadoEjercicio5);
+		
 	}
 	
 	//1) HACER UN MÉTODO QUE RECIBA UNA CADENA Y UN CARACTER Y DIGA SI ESE CARACTER PERTENECE A LA CADENA O NO perteneceACadena
@@ -87,11 +92,13 @@ public class EjercicosBasicos {
 		return par;
 		
 	}
+	
+	
 	//4) HACER UN MÉTODO QUE LE PIDA AL USUARIO SU EDAD Y LE DIGA SI ES MAYOR DE EDAD O NO mayorDeEdad 
 	private static boolean esMayorEdad (int edad) {
 		boolean mayorEdad = false;
 		
-		if (edad > 18) {
+		if (edad >= 18) {
 			mayorEdad = true;
 			System.out.println("Es mayor de edad");
 		}else {
@@ -100,6 +107,8 @@ public class EjercicosBasicos {
 		
 		return mayorEdad;
 	}
+	
+	/*
 	private static boolean esMayorEdadCalculado() {
 		boolean mayorEdad = false;
 		
@@ -108,9 +117,75 @@ public class EjercicosBasicos {
 		String fechaNacimiento = input.nextLine();
 		System.out.println("Naci el :" + fechaNacimiento);
 		
-		
+		LocalDate localDate = LocalDate.now();
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern(fechaNacimiento);
+		dtf.f
 		
 		return mayorEdad;
+	}
+	*/
+	
+	//5) HACER UN MÉTODO QUE RECIBA UNA NOTA DE 0 A 10 Y DIGA SI EQUIVALE A UN APROBADO, BIEN, NOTABLE, O SOBRESALIENTE clasificarNota 
+
+	private static String clasificarNota (int nota) {
+		String calificacion = "";
+			
+		
+		
+		switch (nota) {
+		case 1:
+		{
+							calificacion = "suspenso";
+			
+			break;
+			//yield type;
+		}
+		case 2 : {
+			if (nota >= 5 ) {
+				calificacion = "Suficiente";
+
+			}
+			break;
+			//yield type;
+		}
+		case  3: {
+			if (nota >= 6 ) {
+				calificacion = "Bien";
+
+			}
+			break;
+			//yield type;
+		}
+		case  4: {
+			if (nota >= 7 || nota < 9 ) {
+				calificacion = "Notable";
+
+			}
+			break;
+			//yield type;
+		}
+		case  5: {
+			if (nota >= 9 || nota < 10 ) {
+				calificacion = "Sobresaliente";
+
+			}
+			break;
+			//yield type;
+		}
+		case  6: {
+			if (nota == 10 ) {
+				calificacion = "Matrícula de Honor";
+
+			}
+			break;
+			//yield type;
+		}
+		
+		default:
+			System.out.println("El dato introducido (" + nota + ") no es correcto.Introduzca un número del 0 al 10");
+		}
+		return calificacion;
+		
 	}
 }
 	
