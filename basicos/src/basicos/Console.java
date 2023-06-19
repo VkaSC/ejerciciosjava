@@ -4,6 +4,15 @@ import java.util.Scanner;
 
 public class Console {
 	
+	
+	/**
+	 * 
+	 * @param message (Mensaje que mostramos al usuario por consola)
+	 * @param erroMessage (Mensaje mostrado al usuario por consola en caso de error)
+	 * @param minimunValue (controlamos que no pueda introducir un número inferior a lo establecido)
+	 * @param maxValue  (controlamos que no pueda introducir un número superior a lo establecido)
+	 * @return número entero
+	 */
 	public static int readNumber(String message, String erroMessage, int minimunValue, int maxValue ) {
 
 		int number = 0;
@@ -37,11 +46,9 @@ public class Console {
 	/**
 	 * 
 	 * @param message      (Mensaje que mostramos al usuario por consola)
-	 * @param erroMessage  (Mensaje mostrado al usuario por consola en caso de
-	 *                     error)
-	 * @param minimunValue (controlamos que no pueda introducir un número inferior a
-	 *                     lo establecido [en este caso 0 o números negativos)
-	 * @return
+	 * @param erroMessage  (Mensaje mostrado al usuario por consola en caso de error)
+	 * @param minimunValue (controlamos que no pueda introducir un número inferior a lo establecido)
+	 * @return número decimal
 	 */
 	public static double readDouble(String message, String erroMessage, Double minimunValue) {
 
@@ -73,6 +80,18 @@ public class Console {
 		return number;
 	}
 	
+	
+	/**
+	 * 
+	 * @param message (Mensaje que mostramos al usuario por consola)
+	 * @param erroMessage (Mensaje mostrado al usuario por consola en caso de
+	 *                     error)
+	 * @param minimunValue (controlamos que no pueda introducir un número inferior a
+	 *                     lo establecido)
+	 * @param maxValue (controlamos que no pueda introducir un número superior a
+	 *                     lo establecido)
+	 * @return (Número decimal)
+	 */
 	public static double readDouble(String message, String erroMessage, Double minimunValue, Double maxValue ) {
 
 		double number = 0;

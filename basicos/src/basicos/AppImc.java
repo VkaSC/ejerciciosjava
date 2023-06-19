@@ -39,7 +39,7 @@ public class AppImc {
 		//Formateamos el resultado para que solo muestre 3 decimales
 		DecimalFormat formatImc = new DecimalFormat("#.###");
 		
-		//Recogemos datos por consola (llamando al método 'readNumber()')
+		//Recogemos datos por consola (llamando al método 'readNumber()/readDouble()')
 		double altura = Console.readDouble("Introduzca su altura en M :", "El dato introducido no es correcto\nIntroduzca un valor superior a 0.5\n", 0.5, 3.0);
 		double peso = Console.readDouble("Introduzca su peso en Kg:", "El dato introducido no es correcto\nIntroduzca un valor superior a 2.5\n", 2.5);
 		option = Console.readNumber("Seleccione una opción:\n1 Sexo masculino\n2 Sexo femenino", "El dato introducido no es correcto\nIntroduzca '1' para masculino y '2' si es femenino\n", 1, 2);
