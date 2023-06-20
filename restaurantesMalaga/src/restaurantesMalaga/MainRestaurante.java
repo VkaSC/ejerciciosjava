@@ -64,7 +64,8 @@ public class MainRestaurante {
 	}
 
 	public static void main(String[] args) throws IOException {
-		// TODO cargar lista restaurante del fichero
+		
+		// Cargar lista restaurante del fichero
 		File file = new File(RUTA_FICHERO);
 		if (file.exists()) {
 			System.out.println("FICHERO EXISTE!!, a parsearlo :)");
@@ -72,11 +73,50 @@ public class MainRestaurante {
 			List<String> lineas = Files.readAllLines(path);
 			List<Restaurante> listRest = cargarRestaurantes(lineas);
 			System.out.println("La lista tiene: "+ listRest.size() + " restaurantes.");
+			//Metodo mostrar restaurantes
+			mostrarRestaurantes(listRest);
+			
+			Restaurante r5 =listRest.get(4);
+			boolean esta = buscarRestaurante(listRest, r5);
+			System.out.println("R5 está en la lista? " + esta);
 			
 		} else {
 			System.out.println("NO EXISTE!!, el fichero en esta ruta :(");
 		}
 
+	}
+	
+	/**
+	 * Muestra una lista de restaurantes ordenada por posición y con todos los datos
+	 * @param listRest  Lista de restaurantes
+	 */ 
+	public static void mostrarRestaurantes (List<Restaurante> listRest) {
+		System.out.println("Mostrando restaurantes");
+		for (Restaurante r : listRest) {
+			System.out.println(r);
+			
+		}
+	}
+	
+
+	/**
+	 * Buscar restaurante
+	 * @param listRest lista restaurante
+	 * @param restauranteBuscado nombre rest. buscado 
+	 * @return boolean
+	 */
+	public static boolean buscarRestaurante(List<Restaurante> listRest, Restaurante restauranteBuscado){
+		boolean estaRestaurante = false;
+		int pos_actual = 0;
+		int longitud = listRest.size();
+		Restaurante restauranteAux = null;
+		
+		while (!estaRestaurante && pos_actual<longitud) {
+			restauranteAux = listRest.get(pos_actual);
+			estaRestaurante = restauranteAux.equals(restauranteAux);
+			pos_actual = pos_actual+1;
+		}
+		return estaRestaurante;
 	}
 
 }
