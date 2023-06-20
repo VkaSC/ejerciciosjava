@@ -84,7 +84,7 @@ public class MainRestaurante {
 			List<Restaurante> listaNuevaB = buscarRestaurantePorBarrio(listRest, "teatinos");
 			System.out.println(listaNuevaB);
 			
-			List<Restaurante> listaNuevaE = buscarRestaurantePorEspecialidades(listRest, "hamburguesas");
+			List<Restaurante> listaNuevaE = buscarRestaurantePorEspecialidades(listRest, "helados");
 			System.out.println(listaNuevaE);
 			
 
