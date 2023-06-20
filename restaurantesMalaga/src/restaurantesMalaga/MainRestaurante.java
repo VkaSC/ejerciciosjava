@@ -84,6 +84,9 @@ public class MainRestaurante {
 			List<Restaurante> listaNuevaB = buscarRestaurantePorBarrio(listRest, "teatinos");
 			System.out.println(listaNuevaB);
 			
+			List<Restaurante> listaNuevaE = buscarRestaurantePorEspecialidades(listRest, "hamburguesas");
+			System.out.println(listaNuevaE);
+			
 
 			
 		} else {
@@ -156,6 +159,23 @@ public class MainRestaurante {
 			
 		}
 		return restNombre;
+	}
+	
+	public static List<Restaurante> buscarRestaurantePorEspecialidades(List<Restaurante> listRest, String especialidad){
+		List<Restaurante> restEspecialidades = null;
+		//int pos_actual = 0;
+		int longitud = listRest.size();
+		Restaurante restauranteAux = null;
+		restEspecialidades = new ArrayList<Restaurante>();
+		for (int i = 0; i < longitud; i++) {
+			restauranteAux = listRest.get(i);
+			List<String> nombreEspecialidad = restauranteAux.getEspecialidades();
+			if (nombreEspecialidad.contains(especialidad)) {
+				restEspecialidades.add(restauranteAux);
+			}
+			
+		}
+		return restEspecialidades;
 	}
 	
 
