@@ -78,7 +78,13 @@ public class MainRestaurante {
 			
 			Restaurante r5 =listRest.get(4);
 			boolean esta = buscarRestaurante(listRest, r5);
-			System.out.println("R5 está en la lista? " + esta);
+			System.out.println("R5 está en la lista " + esta);
+			List<Restaurante> listaNueva = buscarRestaurantePorNombre(listRest, "McDonadls3");
+			System.out.println(listaNueva);
+			List<Restaurante> listaNuevaB = buscarRestaurantePorBarrio(listRest, "teatinos");
+			System.out.println(listaNuevaB);
+			
+
 			
 		} else {
 			System.out.println("NO EXISTE!!, el fichero en esta ruta :(");
@@ -118,5 +124,40 @@ public class MainRestaurante {
 		}
 		return estaRestaurante;
 	}
+	public static List<Restaurante> buscarRestaurantePorNombre(List<Restaurante> listRest, String nombre){
+		List<Restaurante> restNombre = null;
+		//int pos_actual = 0;
+		int longitud = listRest.size();
+		Restaurante restauranteAux = null;
+		restNombre = new ArrayList<Restaurante>();
+		for (int i = 0; i < longitud; i++) {
+			restauranteAux = listRest.get(i);
+			String nombreRest = restauranteAux.getNombre().trim();
+			if (nombreRest.equals(nombre)) {
+				restNombre.add(restauranteAux);
+			}
+			
+		}
+		return restNombre;
+	}
+
+	public static List<Restaurante> buscarRestaurantePorBarrio(List<Restaurante> listRest, String nombre){
+		List<Restaurante> restNombre = null;
+		//int pos_actual = 0;
+		int longitud = listRest.size();
+		Restaurante restauranteAux = null;
+		restNombre = new ArrayList<Restaurante>();
+		for (int i = 0; i < longitud; i++) {
+			restauranteAux = listRest.get(i);
+			String nombreRest = restauranteAux.getBarrio().trim();
+			if (nombreRest.equals(nombre)) {
+				restNombre.add(restauranteAux);
+			}
+			
+		}
+		return restNombre;
+	}
+	
+
 
 }

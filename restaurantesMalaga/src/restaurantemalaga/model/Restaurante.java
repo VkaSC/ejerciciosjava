@@ -86,13 +86,17 @@ public class Restaurante {
 	}
 	
 	// sobreescribimos métodos
+	
+	//TODO hacerlo generico para cualquier atributo
 	@Override
 	public boolean equals(Object obj) {
 		boolean iguales = false;
 		if (obj != null) {
 			if (obj instanceof Restaurante r) {
 				//son iguales si tienen la misma direccion
-				iguales = this.direccion.equals(r.direccion);
+				//iguales = this.direccion.equals(r.direccion);
+				iguales = this.nombre.equals(r.nombre);
+
 			}
 		}
 		return iguales;
