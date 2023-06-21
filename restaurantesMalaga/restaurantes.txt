@@ -41,7 +41,7 @@
 	36.7184846
   -4.4909181
   teatinos
-  hamburguesas, patas fritas, helados
+  hamburguesas, patas fritas, pescado
   32
   McDonadls6
   MC Donadls Plza de la Marina
@@ -50,7 +50,7 @@
 	36.7184846
   -4.4909181
   centro
-  hamburguesas, patas fritas, helados
+  hamburguesas, patas fritas, helados, pescado
   78
   McDonadls7
   MC Donadls Plza de la Marina
@@ -68,7 +68,7 @@
 	36.7184846
   -4.4909181
   centro
-  hamburguesas, patas fritas, helados
+  hamburguesas, patas fritas, helados, pescado
   15
   McDonadls9
   MC Donadls Plza de la Marina

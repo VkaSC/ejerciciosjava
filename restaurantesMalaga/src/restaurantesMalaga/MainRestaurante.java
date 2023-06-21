@@ -2,19 +2,17 @@ package restaurantesMalaga;
 
 import java.io.File;
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Random;
-import java.util.function.Supplier;
+import java.util.TreeSet;
 
 import restaurantemalaga.model.ComparadorRestaurantes;
 import restaurantemalaga.model.Restaurante;
+import restaurantemalaga.model.ComparadorBarrioPrecio;
 
 public class MainRestaurante {
 
@@ -105,15 +103,20 @@ public class MainRestaurante {
 			boolean esta = Buscar.buscarRestaurante(listRest, r5);
 			System.out.println("R5 está en la lista " + esta);
 			List<Restaurante> listaNueva = Buscar.buscarRestaurantePorNombre(listRest, "McDonadls3");
-			System.out.println("\nRestaurantes por nombre: \n" + listaNueva);
-			List<Restaurante> listaNuevaB = Buscar.buscarRestaurantePorBarrio(listRest, "teatinos");
-			System.out.println("\nRestaurantes por barrio: \n" +listaNuevaB);
+			TreeSet<Restaurante> nombrePrecio = new TreeSet<>(listaNueva);
+			System.out.println("\nRestaurantes por nombre y precio medio: \n" + nombrePrecio);
 			
-			List<Restaurante> listaNuevaE = Buscar.buscarRestaurantePorEspecialidades(listRest, "hamburguesas");
+			
+			List<Restaurante> listaNuevaB = Buscar.buscarRestaurantePorBarrio(listRest, "centro");
+			listaNuevaB.sort(new ComparadorBarrioPrecio());
+			System.out.println("\nRestaurantes por barrio/precio: \n" +listaNuevaB);
+			
+			List<Restaurante> listaNuevaE = Buscar.buscarRestaurantePorEspecialidades(listRest, "pescado");
 			System.out.println("\nRestaurantes por especialidad: \n" +listaNuevaE);
 			
-//			double randomNumber =  randomNumber(5.1, 20.0);;
-//			System.out.println(randomNumber);
+			List<Restaurante> listaBE = Buscar.buscarPorBarrioYEspecialidadOrdenadoPrecio(listRest, "centro", "pescado");
+			System.out.println("\nRestaurantes por Barrio, especialidad y precio: \n" + listaBE);
+
 			
 
 			
@@ -139,19 +142,8 @@ public class MainRestaurante {
 	 listRest.forEach(restaurante -> System.out.println(restaurante));
 	}
 	
-	//Ordenación
 	
 	
-	
-	//TODO revisar metodo numero aleatorio
-	
-//	public static double randomNumber(double maxValue, double minValue) {
-//		
-//		
-//		Random r = new Random();
-//		return  r.nextDouble(maxValue)+minValue;
-//		
-//	}
 	
 
 	

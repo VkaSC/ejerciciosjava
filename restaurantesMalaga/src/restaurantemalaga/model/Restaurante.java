@@ -122,7 +122,7 @@ public class Restaurante implements Comparable<Restaurante>{
 	@Override
 	public int compareTo(Restaurante o) {
 		int resultado = 0;
-		if (this.precioMedio > o.precioMedio) {
+		if (this.precioMedio < o.precioMedio) {
 			resultado = -1;
 		} else if(this.precioMedio > o.precioMedio){
 			resultado = 1;
