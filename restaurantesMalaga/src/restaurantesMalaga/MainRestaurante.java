@@ -28,16 +28,16 @@ public class MainRestaurante {
 			numLinea = numLinea + 1;
 			switch (numLinea) {
 			case 1:
-				restauranteAux.setNombre(linea);
+				restauranteAux.setNombre(linea.trim());
 				break;
 			case 2:
-				restauranteAux.setDireccion(linea);
+				restauranteAux.setDireccion(linea.trim());
 				break;
 			case 3:
-				restauranteAux.setWeb(linea);
+				restauranteAux.setWeb(linea.trim());
 				break;
 			case 4:
-				restauranteAux.setFichaGoogle(linea);
+				restauranteAux.setFichaGoogle(linea.trim());
 				break;
 			case 5:
 				restauranteAux.setLatitud(Float.parseFloat(linea));
@@ -46,11 +46,16 @@ public class MainRestaurante {
 				restauranteAux.setLongitud(Float.parseFloat(linea));
 				break;
 			case 7:
-				restauranteAux.setBarrio(linea);
+				restauranteAux.setBarrio(linea.trim());
 				break;
 			case 8:
 				String[] especialidades = linea.split(",");
-				List<String> lespecialidades = Arrays.asList(especialidades); //Pasar un array a lista
+				String[] especialidadesProcesadas = new String[especialidades.length];
+				
+				for (int i = 0; i < especialidades.length; i++) {
+					especialidadesProcesadas[i] = especialidades[i].trim();
+				}
+				List<String> lespecialidades = Arrays.asList(especialidadesProcesadas); //Pasar un array a lista
 				restauranteAux.setEspecialidades(lespecialidades);
 				lRestaurantes.add(restauranteAux);
 				numLinea = 0;
@@ -77,15 +82,15 @@ public class MainRestaurante {
 			mostrarRestaurantes(listRest);
 			
 			Restaurante r5 =listRest.get(4);
-			boolean esta = buscarRestaurante(listRest, r5);
+			boolean esta = Buscar.buscarRestaurante(listRest, r5);
 			System.out.println("R5 está en la lista " + esta);
-			List<Restaurante> listaNueva = buscarRestaurantePorNombre(listRest, "McDonadls3");
-			System.out.println(listaNueva);
-			List<Restaurante> listaNuevaB = buscarRestaurantePorBarrio(listRest, "teatinos");
-			System.out.println(listaNuevaB);
+			List<Restaurante> listaNueva = Buscar.buscarRestaurantePorNombre(listRest, "McDonadls3");
+			System.out.println("\nRestaurantes por nombre: \n" + listaNueva);
+			List<Restaurante> listaNuevaB = Buscar.buscarRestaurantePorBarrio(listRest, "teatinos");
+			System.out.println("\nRestaurantes por barrio: \n" +listaNuevaB);
 			
-			List<Restaurante> listaNuevaE = buscarRestaurantePorEspecialidades(listRest, "helados");
-			System.out.println(listaNuevaE);
+			List<Restaurante> listaNuevaE = Buscar.buscarRestaurantePorEspecialidades(listRest, "hamburguesas");
+			System.out.println("\nRestaurantes por especialidad: \n" +listaNuevaE);
 			
 
 			
@@ -108,75 +113,6 @@ public class MainRestaurante {
 	}
 	
 
-	/**
-	 * Buscar restaurante
-	 * @param listRest lista restaurante
-	 * @param restauranteBuscado nombre rest. buscado 
-	 * @return boolean
-	 */
-	public static boolean buscarRestaurante(List<Restaurante> listRest, Restaurante restauranteBuscado){
-		boolean estaRestaurante = false;
-		int pos_actual = 0;
-		int longitud = listRest.size();
-		Restaurante restauranteAux = null;
-		
-		while (!estaRestaurante && pos_actual<longitud) {
-			restauranteAux = listRest.get(pos_actual);
-			estaRestaurante = restauranteAux.equals(restauranteAux);
-			pos_actual = pos_actual+1;
-		}
-		return estaRestaurante;
-	}
-	public static List<Restaurante> buscarRestaurantePorNombre(List<Restaurante> listRest, String nombre){
-		List<Restaurante> restNombre = null;
-		//int pos_actual = 0;
-		int longitud = listRest.size();
-		Restaurante restauranteAux = null;
-		restNombre = new ArrayList<Restaurante>();
-		for (int i = 0; i < longitud; i++) {
-			restauranteAux = listRest.get(i);
-			String nombreRest = restauranteAux.getNombre().trim();
-			if (nombreRest.equals(nombre)) {
-				restNombre.add(restauranteAux);
-			}
-			
-		}
-		return restNombre;
-	}
-
-	public static List<Restaurante> buscarRestaurantePorBarrio(List<Restaurante> listRest, String nombre){
-		List<Restaurante> restNombre = null;
-		//int pos_actual = 0;
-		int longitud = listRest.size();
-		Restaurante restauranteAux = null;
-		restNombre = new ArrayList<Restaurante>();
-		for (int i = 0; i < longitud; i++) {
-			restauranteAux = listRest.get(i);
-			String nombreRest = restauranteAux.getBarrio().trim();
-			if (nombreRest.equals(nombre)) {
-				restNombre.add(restauranteAux);
-			}
-			
-		}
-		return restNombre;
-	}
-	
-	public static List<Restaurante> buscarRestaurantePorEspecialidades(List<Restaurante> listRest, String especialidad){
-		List<Restaurante> restEspecialidades = null;
-		//int pos_actual = 0;
-		int longitud = listRest.size();
-		Restaurante restauranteAux = null;
-		restEspecialidades = new ArrayList<Restaurante>();
-		for (int i = 0; i < longitud; i++) {
-			restauranteAux = listRest.get(i);
-			List<String> nombreEspecialidad = restauranteAux.getEspecialidades();
-			if (nombreEspecialidad.contains(especialidad)) {
-				restEspecialidades.add(restauranteAux);
-			}
-			
-		}
-		return restEspecialidades;
-	}
 	
 
 
