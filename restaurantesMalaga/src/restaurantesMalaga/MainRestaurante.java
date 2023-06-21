@@ -127,6 +127,8 @@ public class MainRestaurante {
 	 listRest.forEach(restaurante -> System.out.println(restaurante));
 	}
 	
+	//TODO revisar metodo numero aleatorio
+	
 //	public static double randomNumber(double maxValue, double minValue) {
 //		
 //		
