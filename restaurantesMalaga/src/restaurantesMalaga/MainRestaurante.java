@@ -7,11 +7,13 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 import java.util.function.Supplier;
 
+import restaurantemalaga.model.ComparadorRestaurantes;
 import restaurantemalaga.model.Restaurante;
 
 public class MainRestaurante {
@@ -85,8 +87,18 @@ public class MainRestaurante {
 			Path path = file.toPath();
 			List<String> lineas = Files.readAllLines(path);
 			List<Restaurante> listRest = cargarRestaurantes(lineas);
-			System.out.println("La lista tiene: "+ listRest.size() + " restaurantes.");
+			System.out.println("La lista Original tiene: "+ listRest.size() + " restaurantes.");
 			//Metodo mostrar restaurantes
+			mostrarRestaurantes(listRest);
+			
+			System.out.println("\nLa lista Ordenada precios tiene: "+ listRest.size() + " restaurantes.");
+			//Metodo mostrar restaurantes ordenados
+			Collections.sort(listRest);
+			mostrarRestaurantes(listRest);
+			
+			System.out.println("\nLa lista Ordenada nombre tiene: "+ listRest.size() + " restaurantes.");
+			//Metodo mostrar restaurantes ordenados
+			Collections.sort(listRest, new ComparadorRestaurantes());
 			mostrarRestaurantes(listRest);
 			
 			Restaurante r5 =listRest.get(4);
@@ -126,6 +138,10 @@ public class MainRestaurante {
 	public static void mostrarRestaurantesLambda (List<Restaurante> listRest) {
 	 listRest.forEach(restaurante -> System.out.println(restaurante));
 	}
+	
+	//Ordenación
+	
+	
 	
 	//TODO revisar metodo numero aleatorio
 	

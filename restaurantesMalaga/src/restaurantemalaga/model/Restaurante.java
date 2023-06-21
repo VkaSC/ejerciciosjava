@@ -3,11 +3,10 @@ package restaurantemalaga.model;
 import java.util.Arrays;
 import java.util.List;
 
-public class Restaurante {
+public class Restaurante implements Comparable<Restaurante>{
 	
 	//id?¿
 	private String nombre;
-
 	private String direccion;
 	private String web;
 	private String fichaGoogle;
@@ -118,9 +117,18 @@ public class Restaurante {
 				+ ", especialidades=" + especialidades + ", precio medio=" + precioMedio +   "]";
 	}
 	
-	
-	
-	
+	//Metodo de ordenación
+
+	@Override
+	public int compareTo(Restaurante o) {
+		int resultado = 0;
+		if (this.precioMedio > o.precioMedio) {
+			resultado = -1;
+		} else if(this.precioMedio > o.precioMedio){
+			resultado = 1;
+		}
+		return (int) resultado;
+	}
 	
 	
 }
