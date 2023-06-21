@@ -6,6 +6,7 @@
   -4.4909181
   teatinos
   patas fritas, helados
+  70
   McDonadls2
   MC Donadls Plza de la Marina
   www.mcdonalds.com
@@ -14,6 +15,7 @@
   -4.4909181
   centro
   hamburguesas, patas fritas, helados
+  10.5
   McDonadls3
   MC Donadls Plza de la Marina
   www.mcdonalds.com
@@ -22,6 +24,7 @@
   -4.4909181
   centro
   hamburguesas, patas fritas, helados
+  54.5
   McDonadls4
   MC Donadls Plza de la Marina
   www.mcdonalds.com
@@ -30,6 +33,7 @@
   -4.4909181
   centro
   hamburguesas, patas fritas, helados
+  0
   McDonadls5
   MC Donadls Plza de la Marina
   www.mcdonalds.com
@@ -38,6 +42,7 @@
   -4.4909181
   teatinos
   hamburguesas, patas fritas, helados
+  32
   McDonadls6
   MC Donadls Plza de la Marina
   www.mcdonalds.com
@@ -46,6 +51,7 @@
   -4.4909181
   centro
   hamburguesas, patas fritas, helados
+  78
   McDonadls7
   MC Donadls Plza de la Marina
   www.mcdonalds.com
@@ -54,6 +60,7 @@
   -4.4909181
   centro
   hamburguesas, patas fritas, helados
+  4
   McDonadls8
   MC Donadls Plza de la Marina
   www.mcdonalds.com
@@ -62,6 +69,7 @@
   -4.4909181
   centro
   hamburguesas, patas fritas, helados
+  15
   McDonadls9
   MC Donadls Plza de la Marina
   www.mcdonalds.com
@@ -70,6 +78,7 @@
   -4.4909181
   centro
   hamburguesas, patas fritas, helados
+  0
   McDonadls10
   MC Donadls Plza de la Marina
   www.mcdonalds.com
@@ -78,4 +87,5 @@
   -4.4909181
   centro
   hamburguesas, patas fritas, helados
+  50
 

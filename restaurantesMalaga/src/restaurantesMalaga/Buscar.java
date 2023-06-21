@@ -7,7 +7,7 @@ import restaurantemalaga.model.Restaurante;
 
 public class Buscar {
 	
-		
+		//TODO crear metodo para filtrar por precio
 
 	/**
 	 * Buscar restaurante
@@ -28,6 +28,13 @@ public class Buscar {
 		}
 		return estaRestaurante;
 	}
+	
+	/**
+	 * Busca restaurantes por nombre
+	 * @param listRest lista de restaurantes
+	 * @param nombre	Nombre del restaurante buscado
+	 * @return Lista restaurantes filtrados por nombres.
+	 */
 	public static List<Restaurante> buscarRestaurantePorNombre(List<Restaurante> listRest, String nombre){
 		List<Restaurante> restNombre = null;
 		//int pos_actual = 0;
@@ -45,21 +52,23 @@ public class Buscar {
 		return restNombre;
 	}
 
+	
+
 	public static List<Restaurante> buscarRestaurantePorBarrio(List<Restaurante> listRest, String barrio){
-		List<Restaurante> restNombre = null;
+		List<Restaurante> restBarrio = null;
 		//int pos_actual = 0;
 		int longitud = listRest.size();
 		Restaurante restauranteAux = null;
-		restNombre = new ArrayList<Restaurante>();
+		restBarrio = new ArrayList<Restaurante>();
 		for (int i = 0; i < longitud; i++) {
 			restauranteAux = listRest.get(i);
 			String nombreRest = restauranteAux.getBarrio().trim();
 			if (nombreRest.equals(barrio)) {
-				restNombre.add(restauranteAux);
+				restBarrio.add(restauranteAux);
 			}
 			
 		}
-		return restNombre;
+		return restBarrio;
 	}
 	
 	public static List<Restaurante> buscarRestaurantePorEspecialidades(List<Restaurante> listRest, String especialidad){
@@ -78,5 +87,7 @@ public class Buscar {
 		}
 		return restEspecialidades;
 	}
+	
+	
 
 }

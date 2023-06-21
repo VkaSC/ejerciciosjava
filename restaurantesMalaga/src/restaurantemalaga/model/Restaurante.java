@@ -15,6 +15,7 @@ public class Restaurante {
 	private float longitud;
 	private String barrio;
 	private List<String> especialidades;
+	private double precioMedio;
 	
 	//constructor por defecto
 	public Restaurante() {
@@ -23,7 +24,7 @@ public class Restaurante {
 	
 	//constructor	
 	public Restaurante(String nombre, String direccion, String web, String fichaGoogle, float latitud, float longitud,
-			String barrio, String ... especialidades) {
+			String barrio, float precioMedio, String ... especialidades) {
 		super();
 		this.nombre = nombre;
 		this.direccion = direccion;
@@ -33,6 +34,8 @@ public class Restaurante {
 		this.longitud = longitud;
 		this.barrio = barrio;
 		this.especialidades = Arrays.asList(especialidades); //Porque la lista se ha declarado en el método como vararg.
+		this.precioMedio = precioMedio;
+		
 	}
 	
 	//metodos get/set
@@ -84,6 +87,12 @@ public class Restaurante {
 	public void setEspecialidades(List<String> especialidades) {
 		this.especialidades = especialidades;
 	}
+	public double getPrecioMedio() {
+		return precioMedio;
+	}
+	public void setPrecioMedio(double d) {
+		this.precioMedio = d;
+	}
 	
 	// sobreescribimos métodos
 	
@@ -106,7 +115,7 @@ public class Restaurante {
 	public String toString() {
 		return "Restaurante [nombre=" + nombre + ", direccion=" + direccion + ", web=" + web + ", fichaGoogle="
 				+ fichaGoogle + ", latitud=" + latitud + ", longitud=" + longitud + ", barrio=" + barrio
-				+ ", especialidades=" + especialidades + "]";
+				+ ", especialidades=" + especialidades + ", precio medio=" + precioMedio +   "]";
 	}
 	
 	

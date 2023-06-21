@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Random;
+import java.util.function.Supplier;
 
 import restaurantemalaga.model.Restaurante;
 
@@ -48,6 +50,7 @@ public class MainRestaurante {
 			case 7:
 				restauranteAux.setBarrio(linea.trim());
 				break;
+		
 			case 8:
 				String[] especialidades = linea.split(",");
 				String[] especialidadesProcesadas = new String[especialidades.length];
@@ -57,11 +60,16 @@ public class MainRestaurante {
 				}
 				List<String> lespecialidades = Arrays.asList(especialidadesProcesadas); //Pasar un array a lista
 				restauranteAux.setEspecialidades(lespecialidades);
+				
+				break;
+			case 9:
+				restauranteAux.setPrecioMedio(Double.parseDouble(linea));
+				//restauranteAux.setPrecioMedio(randomNumber(5, 100));
+				
 				lRestaurantes.add(restauranteAux);
 				numLinea = 0;
 				restauranteAux = new Restaurante();
-				break;
-
+				break;		
 			}
 		}
 		return lRestaurantes;
@@ -92,6 +100,9 @@ public class MainRestaurante {
 			List<Restaurante> listaNuevaE = Buscar.buscarRestaurantePorEspecialidades(listRest, "hamburguesas");
 			System.out.println("\nRestaurantes por especialidad: \n" +listaNuevaE);
 			
+//			double randomNumber =  randomNumber(5.1, 20.0);;
+//			System.out.println(randomNumber);
+			
 
 			
 		} else {
@@ -111,6 +122,18 @@ public class MainRestaurante {
 			
 		}
 	}
+	
+	public static void mostrarRestaurantesLambda (List<Restaurante> listRest) {
+	 listRest.forEach(restaurante -> System.out.println(restaurante));
+	}
+	
+//	public static double randomNumber(double maxValue, double minValue) {
+//		
+//		
+//		Random r = new Random();
+//		return  r.nextDouble(maxValue)+minValue;
+//		
+//	}
 	
 
 	
