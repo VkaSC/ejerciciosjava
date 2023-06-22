@@ -1,91 +1,90 @@
-  McDonadls1
-  MC Donadls Plza de la Marina
-  www.mcdonalds.com
-	https://goo.gl/maps/DUmVjnSZeX6Y9n448
-	36.7184846
-  -4.4909181
-  teatinos
-  patas fritas, helados
-  70
-  McDonadls2
-  MC Donadls Plza de la Marina
-  www.mcdonalds.com
-	https://goo.gl/maps/DUmVjnSZeX6Y9n448
-	36.7184846
-  -4.4909181
-  centro
-  hamburguesas, patas fritas, helados
-  10.5
-  McDonadls3
-  MC Donadls Plza de la Marina
-  www.mcdonalds.com
-	https://goo.gl/maps/DUmVjnSZeX6Y9n448
-	36.7184846
-  -4.4909181
-  centro
-  hamburguesas, patas fritas, helados
-  54.5
-  McDonadls4
-  MC Donadls Plza de la Marina
-  www.mcdonalds.com
-	https://goo.gl/maps/DUmVjnSZeX6Y9n448
-	36.7184846
-  -4.4909181
-  centro
-  hamburguesas, patas fritas, helados
-  0
-  McDonadls5
-  MC Donadls Plza de la Marina
-  www.mcdonalds.com
-	https://goo.gl/maps/DUmVjnSZeX6Y9n448
-	36.7184846
-  -4.4909181
-  teatinos
-  hamburguesas, patas fritas, pescado
-  32
-  McDonadls6
-  MC Donadls Plza de la Marina
-  www.mcdonalds.com
-	https://goo.gl/maps/DUmVjnSZeX6Y9n448
-	36.7184846
-  -4.4909181
-  centro
-  hamburguesas, patas fritas, helados, pescado
-  78
-  McDonadls7
-  MC Donadls Plza de la Marina
-  www.mcdonalds.com
-	https://goo.gl/maps/DUmVjnSZeX6Y9n448
-	36.7184846
-  -4.4909181
-  centro
-  hamburguesas, patas fritas, helados
-  4
-  McDonadls8
-  MC Donadls Plza de la Marina
-  www.mcdonalds.com
-	https://goo.gl/maps/DUmVjnSZeX6Y9n448
-	36.7184846
-  -4.4909181
-  centro
-  hamburguesas, patas fritas, helados, pescado
-  15
-  McDonadls9
-  MC Donadls Plza de la Marina
-  www.mcdonalds.com
-	https://goo.gl/maps/DUmVjnSZeX6Y9n448
-	36.7184846
-  -4.4909181
-  centro
-  hamburguesas, patas fritas, helados
-  0
-  McDonadls10
-  MC Donadls Plza de la Marina
-  www.mcdonalds.com
-	https://goo.gl/maps/DUmVjnSZeX6Y9n448
-	36.7184846
-  -4.4909181
-  centro
-  hamburguesas, patas fritas, helados
-  50
-
+La Parrilla
+Calle Larios 10
+www.laparrilla.com
+https://goo.gl/maps/DUmVjnSZeX6Y9n448
+36.720123
+-4.418562
+Centro
+Carnes a la parrilla, ensaladas, postres caseros
+20
+El Tapeo Andaluz
+Calle Granada 25 
+www.eltapeoandaluz.com
+https://goo.gl/maps/DUmVjnSZeX6Y9n448
+36.720982
+-4.419782
+Centro
+Tapas variadas, paella, vinos locales
+15
+Sabor Mediterráneo
+Avenida de la Malagueta 50
+www.sabormediterraneo.com
+https://goo.gl/maps/DUmVjnSZeX6Y9n448
+36.707836
+-4.411243
+Malagueta
+Pescados frescos, mariscos, postres mediterráneos
+18
+La Terraza de María
+Calle Alcazabilla 15 
+www.laterrazademaria.com
+https://goo.gl/maps/DUmVjnSZeX6Y9n448
+36.723528
+-4.413619
+Centro
+Cocina internacional, sushi, cócteles
+18
+El Rinconcito Andaluz
+Calle Carretería 35 
+www.elrinconcitoandaluz.com
+https://goo.gl/maps/DUmVjnSZeX6Y9n448
+36.723931
+-4.422795
+Centro
+Gazpacho, pescaíto frito, flamenco en vivo
+25
+La Malagueta
+Paseo de Reding 22 
+www.restaurantelamalagueta.com
+https://goo.gl/maps/7D3ZfpgNSNE4nK9f9
+36.721957
+-4.405479
+Malagueta
+Mariscos frescos, arroces, postres caseros
+30
+El Patio Andaluz
+Calle San Juan 15 
+www.elpatioandaluz.com
+https://goo.gl/maps/XkwULYoNpmL4sEaM8
+36.723611
+-4.422222
+Centro
+Tapas tradicionales, carnes a la brasa, flamenco en vivo
+25
+La Cueva del Pescador
+Paseo Marítimo 50 
+www.lacuevadelpescador.com
+https://goo.gl/maps/xDQ6rFesMScyNQpE8
+36.622035
+-4.503851
+Torremolinos
+Mariscos frescos, pescados a la parrilla, postres de la casa
+35
+El Mirador de la Montaña
+Carretera de la Sierra Km 8 
+www.elmiradordelamontana.com
+https://goo.gl/maps/xPuh6HsyiH3vjMyFA
+36.768415
+-4.442149
+Montaña
+Cocina de autor, vistas panorámicas, menú degustación
+40
+La Taberna del Puerto
+Puerto Marina Benalmádena
+www.latabernadelpuerto.com
+https://goo.gl/maps/9pZz22E7kjz8RUut6
+36.596257
+-4.514012
+Benalmádena
+Tapas marineras, pescados fritos, sangría casera
+50

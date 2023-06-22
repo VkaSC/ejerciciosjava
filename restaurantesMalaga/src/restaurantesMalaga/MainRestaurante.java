@@ -102,21 +102,25 @@ public class MainRestaurante {
 			Restaurante r5 =listRest.get(4);
 			boolean esta = Buscar.buscarRestaurante(listRest, r5);
 			System.out.println("R5 está en la lista " + esta);
+			
 			List<Restaurante> listaNueva = Buscar.buscarRestaurantePorNombre(listRest, "McDonadls3");
 			TreeSet<Restaurante> nombrePrecio = new TreeSet<>(listaNueva);
 			System.out.println("\nRestaurantes por nombre y precio medio: \n" + nombrePrecio);
 			
-			
 			List<Restaurante> listaNuevaB = Buscar.buscarRestaurantePorBarrio(listRest, "centro");
 			listaNuevaB.sort(new ComparadorBarrioPrecio());
-			System.out.println("\nRestaurantes por barrio/precio: \n" +listaNuevaB);
+			System.out.println("\nRestaurantes por barrio/precio: \n");
+			mostrarRestaurantes( listaNuevaB);
+
 			
 			List<Restaurante> listaNuevaE = Buscar.buscarRestaurantePorEspecialidades(listRest, "pescado");
-			System.out.println("\nRestaurantes por especialidad: \n" +listaNuevaE);
+			System.out.println("\nRestaurantes por especialidad: \n");
+			mostrarRestaurantes( listaNuevaE);
+
 			
 			List<Restaurante> listaBE = Buscar.buscarPorBarrioYEspecialidadOrdenadoPrecio(listRest, "centro", "pescado");
-			System.out.println("\nRestaurantes por Barrio, especialidad y precio: \n" + listaBE);
-
+			System.out.println("\nRestaurantes por Barrio, especialidad y precio: \n");
+			mostrarRestaurantes( listaBE);
 			
 
 			
