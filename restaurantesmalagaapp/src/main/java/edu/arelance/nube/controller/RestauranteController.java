@@ -3,6 +3,8 @@ package edu.arelance.nube.controller;
 import java.time.LocalDateTime;
 import java.util.Optional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import edu.arelance.nube.repository.entity.Restaurante;
@@ -39,6 +42,10 @@ public class RestauranteController {
 	// Atributo
 	@Autowired // inyeccion de dependencias
 	RestauranteService restauranteService;
+	
+	//log
+	Logger logger= LoggerFactory.getLogger(RestauranteController.class);
+
 
 	// Metodos
 	@GetMapping("/test") // Get http://localhost:8081/restaurante/test
@@ -46,6 +53,7 @@ public class RestauranteController {
 
 		Restaurante restaurante = null;
 		System.out.println("LLamando a obtenerRestauranteTest");
+		logger.debug("Estoy en obtenerRestauranteTest");
 		restaurante = new Restaurante(1l, "Martinete", "carlos haya 33", "carranque", "www.martinete.org",
 				"http://gogle.xe", 33.65f, -2.3f, 10, "gazpachelo", "paella", "sopa de marisco", LocalDateTime.now());
 		return restaurante;
@@ -85,6 +93,43 @@ public class RestauranteController {
 
 		return responseEntity;
 	}
+	
+	/*
+	//Metodo get con pathVariable (menos intuitivo)
+	//GET -> Restaurantes en rango de precios //http://localhost:8081/restaurante/5/20
+	@GetMapping ("/{preciomin}/{preciomax}") 
+	public ResponseEntity<?> listarPorRangoDePrecio (@PathVariable int preciomin, @PathVariable int preciomax){
+		ResponseEntity<?> responseEntity = null;
+		Iterable<Restaurante> restEnRango = null;
+		restEnRango =  this.restauranteService.consultaPorRangoPrecio( preciomin,  preciomax);
+		responseEntity = ResponseEntity.ok(restEnRango);
+		return responseEntity;
+
+	}*/
+	
+	//GET -> Restaurantes en rango de precios //http://localhost:8081/restaurante/buscarPorPrecio?preciomin=1&preciomax=10
+		@GetMapping ("/buscarPorPrecio") 
+		public ResponseEntity<?> listarPorRangoDePrecio (@RequestParam (name="preciomin") int preciomin, @RequestParam (name="preciomax") int preciomax){
+			ResponseEntity<?> responseEntity = null;
+			Iterable<Restaurante> restEnRango = null;
+			restEnRango =  this.restauranteService.consultaPorRangoPrecio( preciomin,  preciomax);
+			responseEntity = ResponseEntity.ok(restEnRango);
+			return responseEntity;
+
+		}
+	//Get -> busqueda multiple en función del parametro de busqueda (barrio, nombre o especialidad
+		//http://localhost:8081/restaurante/filtro?nombre=centro
+		@GetMapping("/filtro")
+		public ResponseEntity<?> filtroBusqueda(@RequestParam (name="nombre") String clave){
+			ResponseEntity<?> responseEntity = null;
+			Iterable<Restaurante> resFilt = null;
+			resFilt =  this.restauranteService.buscarPorBarrioNombreOEspecialidad(clave);
+			responseEntity = ResponseEntity.ok(resFilt);
+			return responseEntity;
+		}
+	
+	
+	
 
 	// * POST -> insertar http://localhost:8081/restaurante (Body Restaurante)
 	@PostMapping
@@ -103,6 +148,14 @@ public class RestauranteController {
 	public ResponseEntity<?> modificarRestaurante(@RequestBody Restaurante restaurante, @PathVariable Long id) {
 
 		ResponseEntity<?> responseEntity = null;
+		Optional<Restaurante> opRest = null;
+				opRest = this.restauranteService.modificarRestaurante(id, restaurante);
+				if (opRest.isPresent()) {
+					Restaurante rm = opRest.get(); //rm -> restaurante modificado que nos llega del service
+					responseEntity = ResponseEntity.ok(rm);
+				} else {
+					responseEntity = ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+				}
 		return responseEntity;
 	}
 
