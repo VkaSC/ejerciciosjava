@@ -1,13 +1,18 @@
 package edu.arelance.nube.controller;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
+
+import javax.validation.Valid;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -81,16 +86,19 @@ public class RestauranteController {
 
 		ResponseEntity<?> responseEntity = null;
 		Optional<Restaurante> or = null;
+		logger.debug("Entrando en el método listarPorId: con id:" + id);
 		or = this.restauranteService.consultarUno(id);
 		if ( or.isPresent()) {
 			//La consulta ha encontrado registro
 			Restaurante restauranteLeido = or.get();
 			responseEntity = ResponseEntity.ok(restauranteLeido);
+			logger.debug("Recuperando el registro:" + restauranteLeido);
 		} else {
 			//La consulta no ha encontrado registro
 			responseEntity = ResponseEntity.noContent().build();
+			logger.debug("El restaurante con id: " + id +" NO EXISTE");
 		};
-
+		logger.debug("Saliendo del método");
 		return responseEntity;
 	}
 	
@@ -133,29 +141,44 @@ public class RestauranteController {
 
 	// * POST -> insertar http://localhost:8081/restaurante (Body Restaurante)
 	@PostMapping
-	public ResponseEntity<?> insertarRestaurante(@RequestBody Restaurante restaurante) {
+	public ResponseEntity<?> insertarRestaurante(@Valid @RequestBody Restaurante restaurante, BindingResult bindingResult) {
 
 		ResponseEntity<?> responseEntity = null;
 		Restaurante restauranteNuevo = null;
-		restauranteNuevo = this.restauranteService.altaRestaurante(restaurante);
-		responseEntity = ResponseEntity.status(HttpStatus.CREATED).body(restauranteNuevo);
+		//TODO Validar
+		if (bindingResult.hasErrors()) {
+			logger.debug("Errores en la entrada de POST");
+			responseEntity = generarRespuestaDeErroresValidacion(bindingResult);
+			
+		} else {
+			logger.debug("SIN Errores en la entrada al POST");
+			restauranteNuevo = this.restauranteService.altaRestaurante(restaurante);
+			responseEntity = ResponseEntity.status(HttpStatus.CREATED).body(restauranteNuevo);
+		}
 		return responseEntity;
 	}
 
 	// * PUT -> Modifica un registro que ya existe
 	// http://localhost:8081/restaurante/id (Body Restaurante)
 	@PutMapping("/{id}")
-	public ResponseEntity<?> modificarRestaurante(@RequestBody Restaurante restaurante, @PathVariable Long id) {
+	public ResponseEntity<?> modificarRestaurante(@Valid @RequestBody Restaurante restaurante, @PathVariable Long id, BindingResult bindingResult) {
 
 		ResponseEntity<?> responseEntity = null;
 		Optional<Restaurante> opRest = null;
-				opRest = this.restauranteService.modificarRestaurante(id, restaurante);
-				if (opRest.isPresent()) {
-					Restaurante rm = opRest.get(); //rm -> restaurante modificado que nos llega del service
-					responseEntity = ResponseEntity.ok(rm);
-				} else {
-					responseEntity = ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-				}
+		if (bindingResult.hasErrors()) {
+			logger.debug("Error en la entrada al PUT");
+			responseEntity = generarRespuestaDeErroresValidacion(bindingResult);
+
+		} else {
+			logger.debug("SIN Error en la entrada al PUT");
+			opRest = this.restauranteService.modificarRestaurante(id, restaurante);
+			if (opRest.isPresent()) {
+				Restaurante rm = opRest.get(); //rm -> restaurante modificado que nos llega del service
+				responseEntity = ResponseEntity.ok(rm);
+			} else {
+				responseEntity = ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+			}
+		}
 		return responseEntity;
 	}
 
@@ -167,6 +190,21 @@ public class RestauranteController {
 		this.restauranteService.borrarRestaurante(id);
 		responseEntity = ResponseEntity.ok().build();
 
+		return responseEntity;
+	}
+	
+	//Metodos
+	private ResponseEntity<?> generarRespuestaDeErroresValidacion (BindingResult bindingResult){
+		ResponseEntity<?> responseEntity = null;
+		List<ObjectError> listaDeErrores = null;
+		
+			listaDeErrores = bindingResult.getAllErrors();
+			
+			//Imprimir errores por el log
+			listaDeErrores.forEach(e -> logger.error(e.toString()));
+			
+			responseEntity = ResponseEntity.status(HttpStatus.BAD_REQUEST).body(listaDeErrores);
+		
 		return responseEntity;
 	}
 

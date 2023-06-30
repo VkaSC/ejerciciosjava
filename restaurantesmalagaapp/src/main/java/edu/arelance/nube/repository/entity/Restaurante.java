@@ -9,6 +9,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 @Table(name = "restaurantes")
@@ -17,13 +20,18 @@ public class Restaurante {
 	@Id //indico a spring que el id es la PK
 	@GeneratedValue(strategy = GenerationType.IDENTITY) // Autoincremento MySQL.
 	private Long id;
+	@NotEmpty
 	private String nombre;
+	@NotEmpty
 	private String direccion;
+	@NotEmpty
 	private String barrio;
 	private String web;
 	private String fichaGoogle;
 	private Float latitud;
 	private Float longitud;
+	@Min(2)
+	@Max(500)
 	private Integer precio;
 	private String especialidad1;
 	private String especialidad2;
@@ -168,5 +176,21 @@ public class Restaurante {
 	public void setCreadoEn(LocalDateTime creadoEn) {
 		this.creadoEn = creadoEn;
 	}
+
+	@Override
+	public String toString() {
+		return "Restaurante [id=" + id + ", nombre=" + nombre + ", direccion=" + direccion + ", barrio=" + barrio
+				+ ", web=" + web + ", fichaGoogle=" + fichaGoogle + ", latitud=" + latitud + ", longitud=" + longitud
+				+ ", precio=" + precio + ", especialidad1=" + especialidad1 + ", especialidad2=" + especialidad2
+				+ ", especialidad3=" + especialidad3 + ", creadoEn=" + creadoEn + ", getId()=" + getId()
+				+ ", getNombre()=" + getNombre() + ", getDireccion()=" + getDireccion() + ", getBarrio()=" + getBarrio()
+				+ ", getWeb()=" + getWeb() + ", getFichaGoogle()=" + getFichaGoogle() + ", getLatitud()=" + getLatitud()
+				+ ", getLongitud()=" + getLongitud() + ", getPrecio()=" + getPrecio() + ", getEspecialidad1()="
+				+ getEspecialidad1() + ", getEspecialidad2()=" + getEspecialidad2() + ", getEspecialidad3()="
+				+ getEspecialidad3() + ", getCreadoEn()=" + getCreadoEn() + ", getClass()=" + getClass()
+				+ ", hashCode()=" + hashCode() + ", toString()=" + super.toString() + "]";
+	}
+	
+	
 	
 }
